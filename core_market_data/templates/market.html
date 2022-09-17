@@ -1,0 +1,63 @@
+{% extends 'base.html' %}
+{% block title %}
+Flask Market - Market
+{% endblock %}
+{% block body %}
+
+
+<div class="row" style="margin-top: 15px; margin-left: 15px;">
+   <div class="col-8">
+      <h2 align="center"><u>ALL ITEMS</u></h2>
+     <p>Click on one of the Item to start Buying</p>
+      <table class="table table-dark">
+         <thead>
+            <tr>
+               <th scope="col">Id</th>
+               <th scope="col">Name</th>
+               <th scope="col">BarCode</th>
+               <th scope="col">Price</th>
+               <th scope="col">Option</th>
+            </tr>
+         </thead>
+         <tbody>
+            {% for item in items  %}
+            {% include 'includes/item_models.html' %}
+            <tr>
+               <th scope="row">{{ item.id }}</th>
+               <td>{{ item.name }}</td>
+               <td>{{item.barcode }}</td>
+               <td>{{ item.price }} Rs.</td>
+               <td>
+                 <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal-{{ item.id }}">
+   More Info
+</button>
+                  <button type="button" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#PurchaseModal-{{ item.id }}">
+   Purchase
+</button>
+               </td>
+            </tr>
+            {% endfor %}
+         </tbody>
+      </table>
+   </div>
+
+   <div class="col-4">
+     <h2 align="center"><u>OWNED ITEMS</u></h2>
+     <p>Click on one of the Item to start Selling</p>
+    {% for owned_item in owned_items %}
+       {% include 'includes/sell_item_models.html' %}
+       <div class="card w-75 bg-dark">
+  <div class="card-body">
+    <h5 class="card-title" style="color: white">{{owned_item.name}}</h5>
+    <p class="card-text" style="color: white">{{owned_item.description}}</p>
+      <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#SellModal-{{ owned_item.id }}">
+   Sell Item
+</button>
+      <p class="card-text" style="color: white">Cost of the Item is Rs. {{owned_item.price}}</p>
+  </div>
+    {% endfor %}
+</div>
+   </div>
+</div>
+
+{% endblock %}

@@ -1,0 +1,46 @@
+
+<div class="modal fade" id="exampleModal-{{ item.id }}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content bg-dark">
+      <div class="modal-header">
+        <h5 class="modal-title text-light" id="exampleModalLabel">{{item.name}}</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body text-light">
+       {{item.description}}
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-primary" data-bs-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<!-- purchase-confirm-model -->
+<div class="modal fade" id="PurchaseModal-{{ item.id }}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content bg-dark">
+      <div class="modal-header">
+        <h5 class="modal-title text-light" id="SellModalLabel">{{item.name}}</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body text-light">
+
+        <form method="post">
+          {{purchase_form.hidden_tag()}}
+          <h3>Are you sure you want to buy {{item.name}} at {{item.price}} Rs.</h3>
+          <h6>By Clicking on purchase you will purchase this item.</h6>
+            <input id="Purchased_item" name="Purchased_item" type="hidden" value="{{item.name}}">
+          {{purchase_form.submit(class='btn btn-outline-success btn-block')}}
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+
+      </div>
+    </div>
+  </div>
+</div>
+
+

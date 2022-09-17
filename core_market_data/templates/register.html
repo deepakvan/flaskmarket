@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+
+{% block title %}
+Flask Market - Register
+{% endblock %}
+
+
+{% block body %}
+<div class="container" style="width:50%; margin: auto">
+<h1>Register Form</h1>
+<form method="POST">
+    {{form.hidden_tag()}}
+    {{form.username.label()}}
+    {{form.username(class="form-control", placeholder="User name")}}<br>
+    {{form.email_address.label()}}
+    {{form.email_address(class="form-control", placeholder="Email Address")}}<br>
+    {{form.password1.label()}}
+    {{form.password1(class="form-control", placeholder="Password")}}<br>
+    {{form.password2.label()}}
+    {{form.password2(class="form-control", placeholder="Confirm Password")}}<br>
+
+    {{form.submit(class="btn btn-lg btn-block btn-primary")}}
+</form>
+</div>
+{% endblock %}
